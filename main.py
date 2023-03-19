@@ -14,7 +14,7 @@ country_code = weather_api.country_code
 r = sr.Recognizer()
 
 # Say hello to the user
-assistaneResponse("Hello, How Can Help you today")
+assistaneResponse("Hello, How Can I Help you today")
 
 # Use the default microphone as the audio source
 with sr.Microphone() as source:
@@ -55,7 +55,7 @@ if match:
 # If the word "describe" is found in the user's speech, use image captioning to describe an image and respond to the user
 elif match_2:
     from image_caption import predict_step
-    caption = predict_step(['image-captioning-example.png'])
+    caption = predict_step(['images_1.jpeg'])
     assistaneResponse(caption[0])
 
 # If the word "color" is found in the user's speech, use color detection to detect colors in an image and respond to the user
