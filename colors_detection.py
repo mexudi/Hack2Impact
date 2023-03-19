@@ -4,6 +4,16 @@ import time
 from text_to_speech import assistaneResponse
 
 def color_recognition(image):
+    
+    """Recognizes the percentage of different colors in an image using HSV color space.
+
+    Args:
+        image: A numpy array representing an image.
+
+    Returns:
+        A dictionary containing the percentage of each color in the image.
+
+    """
     # Define the boundaries of the colors in the HSV color space
     colors = {
         'red': ([0, 50, 50], [5, 255, 255]),
@@ -34,6 +44,15 @@ def color_recognition(image):
     return color_regions
 
 def color_detection():
+    
+    """Opens the camera and displays the percentage of different colors in the live feed. 
+
+    The function runs for a fixed amount of time, and then returns the average percentages of each color
+    present in the frames captured during this time period.
+
+    Returns:
+        None
+    """
 
     # Initialize the video capture object
     video_capture = cv2.VideoCapture(0)
