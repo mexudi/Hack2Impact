@@ -13,9 +13,10 @@ def assistaneResponse(text):
     Returns:
         None
     """
+    # Print the input text to the console for logging purposes
     print(text)
 
-    # COnvert the text to speech
+    # Convert the text to speech
     myobj = gTTS(text=text, lang='en', slow=False)
 
     # Save the converted audio to a file
