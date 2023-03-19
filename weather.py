@@ -2,6 +2,19 @@ import requests
 import math
 
 def get_weather_condition(api_key, location,country_code):
+    """
+    Retrieves the weather condition, temperature, maximum and minimum temperature, and humidity for a given location
+    using the OpenWeatherMap API.
+
+    Args:
+        api_key (str): The API key for the OpenWeatherMap API.
+        location (str): The name of the location to retrieve weather data for.
+        country_code (str): The two-letter country code for the location.
+
+    Returns:
+        str: A string containing the weather condition, temperature, maximum and minimum temperature, and humidity for the
+        specified location.
+    """
     # URL for OpenWeatherMap API
     url = f"https://api.openweathermap.org/data/2.5/weather?q={location},{country_code}&appid={api_key}"
     
