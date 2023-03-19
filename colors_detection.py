@@ -1,7 +1,8 @@
-import cv2
+import cv2 # Import the OpenCV library
 import numpy as np
 import time
-from text_to_speech import assistaneResponse
+from text_to_speech import assistaneResponse # Import a function to generate an audio response
+
 
 def color_recognition(image):
     
@@ -36,8 +37,14 @@ def color_recognition(image):
     color_regions = {}
     total_pixels = hsv_image.shape[0] * hsv_image.shape[1]
     for color, (lower, upper) in colors.items():
+
+        # Create a binary mask for the color region
         mask = cv2.inRange(hsv_image, np.array(lower), np.array(upper))
+
+        # Count the number of non-zero pixels in the mask
         color_pixels = cv2.countNonZero(mask)
+
+        # Calculate the percentage of the color in the image
         color_regions[color] = color_pixels / total_pixels * 100
     
     # Return the percentage of each color
@@ -73,6 +80,7 @@ def color_detection():
 
         # Display the percentage of each color on the frame
         for color, percentage in color_percentages.items():
+            # Add text to the frame with the color percentage information
             text = '{}: {:.2f}%'.format(color, percentage)
             cv2.putText(frame, text, (10, (list(color_percentages.keys()).index(color) + 1) * 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2, cv2.LINE_AA)
 
