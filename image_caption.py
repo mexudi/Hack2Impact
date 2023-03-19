@@ -8,11 +8,12 @@ model = VisionEncoderDecoderModel.from_pretrained("nlpconnect/vit-gpt2-image-cap
 feature_extractor = ViTImageProcessor.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
 tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
 
+# Set the device to GPU if available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
 
-
+# Set the generation parameters
 max_length = 16
 num_beams = 4
 gen_kwargs = {"max_length": max_length, "num_beams": num_beams}
@@ -34,6 +35,8 @@ def predict_step(image_paths):
     Returns:
     - preds (list): a list of predicted captions for each input image
   """
+
+  # Loop over the list of image paths and generate captions for each image
   images = []
   for image_path in image_paths:
     i_image = Image.open(image_path)
@@ -41,6 +44,7 @@ def predict_step(image_paths):
       i_image = i_image.convert(mode="RGB")
 
     images.append(i_image)
+
   # Extract features from the images and move the tensors to the GPU if available
   pixel_values = feature_extractor(images=images, return_tensors="pt").pixel_values
   pixel_values = pixel_values.to(device)
