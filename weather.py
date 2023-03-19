@@ -15,7 +15,7 @@ def get_weather_condition(api_key, location,country_code):
         str: A string containing the weather condition, temperature, maximum and minimum temperature, and humidity for the
         specified location.
     """
-    # URL for OpenWeatherMap API
+    # URL for OpenWeatherMap API with location and API key
     url = f"https://api.openweathermap.org/data/2.5/weather?q={location},{country_code}&appid={api_key}"
     
     
@@ -32,6 +32,8 @@ def get_weather_condition(api_key, location,country_code):
         max_temp = math.floor(weather_data['main']['temp_max'] - 273.15)
         min_temp = math.floor(weather_data['main']['temp_min'] - 273.15)
         humidity = weather_data['main']['humidity']
+
+        # Return a string containing the weather condition, temperature, maximum and minimum temperature, and humidity for the specified location
         return f"The weather condition in {location} is {weather_condition}. The current temperture is {temp}, and the humidity is: {humidity}"
     else:
         # If the request was unsuccessful, return an error message
