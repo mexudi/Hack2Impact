@@ -3,6 +3,16 @@ import os
 from gtts import gTTS
 
 def assistaneResponse(text):
+    """
+    Generates a text-to-speech response for the given text using the Google Text-to-Speech API (gTTS),
+    saves the generated audio to a file, and plays the audio file.
+
+    Args:
+        text (str): The text to convert to speech.
+
+    Returns:
+        None
+    """
     print(text)
 
     # COnvert the text to speech
