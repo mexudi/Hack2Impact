@@ -108,7 +108,7 @@ def color_detection():
     #print(averages)
     output_str = "The picture contains the following colors:"
     for color, value in averages.items():
-        if value > 20:
+        if value > 10:
             output_str += " For " + color +  " it is "+str(round(float(value)))+' percentage. '
 
     #print(output_str)
